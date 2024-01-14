@@ -34,17 +34,17 @@ pipeline{
         stage ('Publish to Nexus'){
             steps {
                 nexusArtifactUploader artifacts:
-                [[artifactId: '${ArtifactId}',
+                [[artifactId: "${ArtifactId}",
                 classifier: '',
-                file: 'target/${ArtifactId}-${Version}.war',
+                file: "target/${ArtifactId}-${Version}.war",
                 type: 'war']],
                 credentialsId: '29452d18-dc7f-4646-8573-e0f282e34465',
-                groupId: '${GroupId}',
+                groupId: "${GroupId}",
                 nexusUrl: '172.20.10.153:8081',
                 nexusVersion: 'nexus3',
                 protocol: 'http',
                 repository: 'AntoniosDevOpsLab-SNAPSHOT',
-                version: '${Version}'
+                version: "${Version}"
             }
 
         }
